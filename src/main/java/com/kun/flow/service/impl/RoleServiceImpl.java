@@ -7,15 +7,14 @@
 
 package com.kun.flow.service.impl;
 
-import java.io.Serializable;
-import java.util.List;
-
 import com.kun.flow.bean.Pagination;
-import com.kun.flow.data.RoleBindPermitMapper;
 import com.kun.flow.data.RoleMapper;
 import com.kun.flow.exception.ServiceException;
 import com.kun.flow.model.Role;
 import com.kun.flow.service.IRoleService;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * 角色业务实现类
@@ -26,19 +25,12 @@ import com.kun.flow.service.IRoleService;
  */
 public class RoleServiceImpl extends AbstractServiceImpl<Role> implements IRoleService {
 
-	private RoleBindPermitMapper roleBindPermitMapper;
 
 	public RoleMapper getRoleMapper() {
 		return (RoleMapper) this.getMapper();
 	}
 
-	public RoleBindPermitMapper getRoleBindPermitMapper() {
-		return roleBindPermitMapper;
-	}
 
-	public void setRoleBindPermitMapper(RoleBindPermitMapper roleBindPermitMapper) {
-		this.roleBindPermitMapper = roleBindPermitMapper;
-	}
 
 	@Override
 	public List<Role> listByOperater(Serializable key, Pagination page) throws ServiceException {
@@ -70,7 +62,6 @@ public class RoleServiceImpl extends AbstractServiceImpl<Role> implements IRoleS
 	public void deleteByKey(Serializable key) throws ServiceException {
 		try {
 			// 笨拙的级联删除
-			this.getRoleBindPermitMapper().deleteByRole(key);
 			super.deleteByKey(key);
 		} catch (Exception e) {
 			throw new ServiceException(e);

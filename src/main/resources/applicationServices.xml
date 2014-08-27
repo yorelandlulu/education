@@ -14,26 +14,6 @@
 			<ref local="operaterService" />
 		</property>
 	</bean>
-	<bean id="newsServiceProxy" parent="baseTxProxy">
-		<property name="proxyInterfaces">
-			<list>
-				<value>com.kun.flow.service.INewsService</value>
-			</list>
-		</property>
-		<property name="target">
-			<ref local="newsService" />
-		</property>
-	</bean>
-	<bean id="newsCategoryServiceProxy" parent="baseTxProxy">
-		<property name="proxyInterfaces">
-			<list>
-				<value>com.kun.flow.service.INewsCategoryService</value>
-			</list>
-		</property>
-		<property name="target">
-			<ref local="newsCategoryService" />
-		</property>
-	</bean>
 	<bean id="operaterService" class="com.kun.flow.service.impl.OperaterServiceImpl">
 		<property name="mapper">
 			<ref bean="operaterMapper" />
@@ -57,16 +37,6 @@
 			<ref bean="permitMapper" />
 		</property>
 	</bean>
-	<bean id="newsService" class="com.kun.flow.service.impl.NewsServiceImpl">
-		<property name="mapper">
-			<ref bean="newsMapper" />
-		</property>
-	</bean>
-	<bean id="newsCategoryService" class="com.kun.flow.service.impl.NewsCategoryServiceImpl">
-		<property name="mapper">
-			<ref bean="newsCategoryMapper" />
-		</property>
-	</bean>
 	<bean id="roleServiceProxy" parent="baseTxProxy">
 		<property name="proxyInterfaces">
 			<list>
@@ -80,9 +50,6 @@
 	<bean id="roleService" class="com.kun.flow.service.impl.RoleServiceImpl">
 		<property name="mapper">
 			<ref bean="roleMapper" />
-		</property>
-		<property name="roleBindPermitMapper">
-			<ref bean="roleBindPermitMapper" />
 		</property>
 	</bean>
 	<bean id="operaterBindRoleServiceProxy" parent="baseTxProxy">
@@ -98,21 +65,6 @@
 	<bean id="operaterBindRoleService" class="com.kun.flow.service.impl.OperaterBindRoleServiceImpl">
 		<property name="mapper">
 			<ref bean="operaterBindRoleMapper" />
-		</property>
-	</bean>
-	<bean id="roleBindPermitServiceProxy" parent="baseTxProxy">
-		<property name="proxyInterfaces">
-			<list>
-				<value>com.kun.flow.service.IRoleBindPermitService</value>
-			</list>
-		</property>
-		<property name="target">
-			<ref local="roleBindPermitService" />
-		</property>
-	</bean>
-	<bean id="roleBindPermitService" class="com.kun.flow.service.impl.RoleBindPermitServiceImpl">
-		<property name="mapper">
-			<ref bean="roleBindPermitMapper" />
 		</property>
 	</bean>
 </beans>
