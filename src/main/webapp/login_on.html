@@ -18,15 +18,15 @@
        </div>
 
       <div class="menu clear-block">
-      <ul>
-         <li><a href="home.html" title="首页" id="li1" class="select">首页</a></li>
-         <li><a href="survey.html" title="教学准备" id="li1" >教学准备</a></li>
-         <li><a href="strategy.html" title="教学实施" id="li1" >教学实施</a></li>
-         <li><a href="training.html" title="学员管理" id="li1" >学员管理</a></li>
-         <li><a href="consulting.html" title="教学总结" id="li1" >教学总结</a></li>
-         <li><a href="teacher.html" title="综合查询" id="li1" >综合查询</a></li>
-         <li><a href="teacher.html" title="代办任务" id="li1" >代办任务</a></li>
-         </ul>
+          <ul>
+              <li><a href="login_on.html" title="首页" id="li1" class="select">首页</a></li>
+              <li><a href="eduprepare/index.html" title="教学准备" id="li1">教学准备</a></li>
+              <li><a href="eduop/index.html" title="教学实施" id="li1">教学实施</a></li>
+              <li><a href="stumana/index.html" title="学员管理" id="li1">学员管理</a></li>
+              <li><a href="edusummary/index.html" title="教学总结" id="li1">教学总结</a></li>
+              <li><a href="comprehensivequery/index.html" title="综合查询" id="li1" class="select">综合查询</a></li>
+              <li><a href="#" title="代办任务" id="li1">代办任务</a></li>
+          </ul>
       </div>
       
 <div class="center_contect clear-block">
@@ -49,7 +49,7 @@
                          <p class="txt">今晚有空吃饭吗？。今晚有空吃饭吗---<br /><span><strong>来自王老师</strong></span></p>
                         
                       </li>
-                    </ul> <p align="right"><a href="login.html" class="tuichuicon">退出</a></p>
+                    </ul> <p align="right"><a href="javascript:logout()" class="tuichuicon">退出</a></p>
                 </div>
             </div>
            <div class="weather_box">
@@ -277,5 +277,17 @@
 地址:上海市虹漕南路123号     邮编:200233     总机:021-31233333   </div>   
       
 </div>
+<script type="application/javascript">
+    function logout(){
+        $.ajax({
+            url:'login/logout.do',
+            type : 'get',
+            success: function (data){
+                //location.reload();
+                window.location.href = 'login.html';
+            }
+        });
+    }
+</script>
 </body>
 </html>

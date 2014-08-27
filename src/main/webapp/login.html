@@ -5,6 +5,10 @@
 <title>中共上海市委党校第三分校教务管理系统</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="common/widget/jquery/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="common/widget/jquery/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="common/js/validater.js"></script>
+
     <script type="text/javascript" src="common/util.js"></script>
  
       
@@ -18,16 +22,15 @@
        </div>
 
       <div class="menu clear-block">
-      <ul>
-         <li><a href="home.html" title="首页" id="li1" class="select">首页</a></li>
-         <li><a href="survey.html" title="教学准备" id="li1" >教学准备</a></li>
-         <li><a href="strategy.html" title="教学实施" id="li1" >教学实施</a></li>
-         <li><a href="training.html" title="学员管理" id="li1" >学员管理</a></li>
-         <li><a href="consulting.html" title="教学总结" id="li1" >教学总结</a></li>
-         <li><a href="teacher.html" title="综合查询" id="li1" >综合查询</a></li>
-         <li><a href="teacher.html" title="代办任务" id="li1" >代办任务</a></li>
-   
-         </ul>
+          <ul>
+              <li><a href="login_on.html" title="首页" id="li1" class="select">首页</a></li>
+              <li><a href="eduprepare/index.html" title="教学准备" id="li1">教学准备</a></li>
+              <li><a href="eduop/index.html" title="教学实施" id="li1">教学实施</a></li>
+              <li><a href="stumana/index.html" title="学员管理" id="li1">学员管理</a></li>
+              <li><a href="edusummary/index.html" title="教学总结" id="li1">教学总结</a></li>
+              <li><a href="comprehensivequery/index.html" title="综合查询" id="li1">综合查询</a></li>
+              <li><a href="#" title="代办任务" id="li1">代办任务</a></li>
+          </ul>
       </div>
       
 <div class="center_contect clear-block">
@@ -36,15 +39,16 @@
             <div class="login_box">
               <div class="login_title"><p>用户登录入口</p></div>
                  <div class="loggin_txt">
+                     <form id="login_form_pop" action="">
                    <ul>
                       <li class="clear-block">
-                        <p class="username">用户名:</p><p class="txt"><input name="" type="text" /></p>
+                        <p class="username">用户名:</p><p class="txt"><input name="code" type="text" /></p>
                       </li>
                           <li  class="clear-block">
-                       <p class="username">密&nbsp;码:</p><p class="txt"><input name="" type="text" /></p>
+                       <p class="username">密&nbsp;码:</p><p class="txt"><input name="password" type="password" /></p>
                       </li>
-                         
-                    </ul> <p align="center"><a href="login_on.html" class="dengluuicon">登录</a><a href="#" class="dengluuicon">忘记密码</a></p>
+                    </ul> <p align="center"><a id="sign_in_btn_pop" href="javascript:login()" class="dengluuicon">登录</a><a href="#" class="dengluuicon">忘记密码</a></p>
+                     </form>
                 </div>
             </div>
            <div class="weather_box">
@@ -203,5 +207,29 @@
       
       
 </div>
+
+<script type="text/javascript">
+    $("body").keydown(function() {
+        if (event.keyCode == "13") {//回车提交
+            $('#login_submit').click();
+        }
+    });
+    function login() {
+        $('#login_form_pop').form(
+                'submit',
+                {
+                    url : 'login/login.do',
+                    success : function(data) {
+                        var jsonData = eval('(' + data + ')');
+                        if (data != null && data != ''
+                                && jsonData.success == true) {
+                            window.location.href = 'login_on.html';
+                        } else {
+                            $.messager.alert('提 示', jsonData.message);
+                        }
+                    }
+                });
+    }
+</script>
 </body>
 </html>

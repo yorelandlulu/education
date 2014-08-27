@@ -9,3 +9,9 @@
         if (r!=null) return unescape(r[2]); return null;
     }
 })(jQuery);
+
+
+function toggleLeft(id){
+    $("#container .center_contect .left_news .left_menu .center ul li ul li").addClass("hidden");
+    $("#menuli"+id).children("ul").children("li").removeClass("hidden");
+}

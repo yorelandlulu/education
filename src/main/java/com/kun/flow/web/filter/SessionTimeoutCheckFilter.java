@@ -92,9 +92,9 @@ public class SessionTimeoutCheckFilter implements Filter {
 //				response.setContentType("text/html; charset=utf-8");
 //				response.setStatus(400);
 //				response.getWriter().print(sb.toString());
-                response.sendRedirect(request.getContextPath()+"/index.html");
+                response.sendRedirect(request.getContextPath()+"/login.html");
             } else {
-                response.sendRedirect(request.getContextPath()+"/index.html");
+                response.sendRedirect(request.getContextPath()+"/login.html");
             }
 		} catch (IOException e) {
 			logger.error(e);
