@@ -8,6 +8,10 @@
 		<property name="mapperInterface" value="com.kun.flow.data.OperaterMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="testFunMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.kun.flow.data.TestFunMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<bean id="permitMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.kun.flow.data.PermitMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

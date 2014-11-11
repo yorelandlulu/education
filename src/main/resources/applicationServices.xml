@@ -18,6 +18,9 @@
 		<property name="mapper">
 			<ref bean="operaterMapper" />
 		</property>
+        <property name="testFunMapper">
+            <ref bean="testFunMapper" />
+        </property>
 		<property name="operaterBindRoleMapper">
 			<ref bean="operaterBindRoleMapper" />
 		</property>

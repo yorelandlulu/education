@@ -1,5 +1,7 @@
 package com.kun.flow.web.control;
 
+import com.kun.flow.model.TestFun;
+import com.kun.flow.model.TestFunExample;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +14,8 @@ import com.kun.flow.model.Operater;
 import com.kun.flow.service.IOperaterService;
 import com.kun.flow.web.response.MessageOut;
 import com.kun.flow.web.response.Out;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/login")
@@ -67,4 +71,15 @@ public class LoginControl extends BaseControl<Operater> {
 		}
 		return MessageOut.LOGOUT_OK_MESSAGE;
 	}
+
+
+    @RequestMapping("/listTestFun.do")
+    @ResponseBody
+    public List<TestFun> listTestFun(){
+        TestFunExample example = new TestFunExample();
+//        TestFunExample.Criteria c = example.createCriteria();
+//        c.andNameEqualTo("pual");
+//        example.or(c);
+        return getOperaterService().selectByExample(example);
+    }
 }

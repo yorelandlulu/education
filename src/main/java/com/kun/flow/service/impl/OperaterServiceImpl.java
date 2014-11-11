@@ -9,10 +9,15 @@ package com.kun.flow.service.impl;
 
 import com.kun.flow.data.OperaterBindRoleMapper;
 import com.kun.flow.data.OperaterMapper;
+import com.kun.flow.data.TestFunMapper;
 import com.kun.flow.exception.ServiceException;
 import com.kun.flow.model.Operater;
+import com.kun.flow.model.TestFun;
+import com.kun.flow.model.TestFunExample;
 import com.kun.flow.service.IOperaterService;
 import com.kun.flow.util.MD5Util;
+
+import java.util.List;
 
 /**
  * 操作员业务处理实现类
@@ -24,8 +29,17 @@ import com.kun.flow.util.MD5Util;
 public class OperaterServiceImpl extends AbstractServiceImpl<Operater> implements IOperaterService {
 
 	private OperaterBindRoleMapper operaterBindRoleMapper;
+    private TestFunMapper testFunMapper;
 
-	private OperaterMapper getOperaterMapper() {
+    public TestFunMapper getTestFunMapper() {
+        return testFunMapper;
+    }
+
+    public void setTestFunMapper(TestFunMapper testFunMapper) {
+        this.testFunMapper = testFunMapper;
+    }
+
+    private OperaterMapper getOperaterMapper() {
 		return (OperaterMapper) this.getMapper();
 	}
 
@@ -73,4 +87,8 @@ public class OperaterServiceImpl extends AbstractServiceImpl<Operater> implement
 			throw new ServiceException(e);
 		}
 	}
+
+    public List<TestFun> selectByExample(TestFunExample example){
+        return testFunMapper.selectByExample(example);
+    }
 }

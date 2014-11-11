@@ -8,17 +8,9 @@
     <meta http-equiv="Expires" content="0" />
 
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <script type="../text/javascript" src="common/widget/jquery/jquery.min.js"></script>
-    <script type="../text/javascript" src="common/util.js"></script>
+    <script type="text/javascript" src="../common/widget/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../common/util.js"></script>
 
-
-
-    <script type="text/javascript">
-        $(function() {
-            $('.l_c > ul').tabs({ fx: { opacity: 'toggle' } }).tabs('l_c', 0);
-
-        });
-    </script>
 
 </head>
 
@@ -93,12 +85,14 @@
 
         <div class="right_neiye_con">
 
-
-
-
-
-
-
+    <table id="data1" border="1" width="500px">
+        <tr>
+            <th>姓名</th>
+            <th>昵称</th>
+            <th>手机</th>
+            <th>邮箱</th>
+        </tr>
+        </table>
         </div>
 
 
@@ -113,5 +107,36 @@
 
 </div>
 <!--<script src="/static/bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url:'../login/listTestFun.do',
+            async:true,
+            type : 'get',
+            dataType: 'json',
+            success: function (d){
+                for(var row in d){
+                    var str = "";
+                    str +=("<tr>");
+                    str +=("<td>");
+                    str +=(d[row].name);
+                    str +=("</td>");
+                    str +=("<td>");
+                    str +=(d[row].nickname);
+                    str +=("</td>");
+                    str +=("<td>");
+                    str +=(d[row].phonenumber);
+                    str +=("</td>");
+                    str +=("<td>");
+                    str +=(d[row].email);
+                    str +=("</td>");
+                    str +=("</tr>");
+                    $("#data1").append(str);
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

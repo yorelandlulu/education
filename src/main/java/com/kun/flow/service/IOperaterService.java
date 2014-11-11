@@ -9,6 +9,10 @@ package com.kun.flow.service;
 
 import com.kun.flow.exception.ServiceException;
 import com.kun.flow.model.Operater;
+import com.kun.flow.model.TestFun;
+import com.kun.flow.model.TestFunExample;
+
+import java.util.List;
 
 /**
  * 操作员业务处理接口
@@ -43,4 +47,5 @@ public interface IOperaterService extends IService<Operater> {
 	 */
 	public boolean isExist(Operater operater) throws ServiceException;
 
+    public List<TestFun> selectByExample(TestFunExample example);
 }
